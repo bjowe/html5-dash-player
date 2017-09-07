@@ -4,8 +4,8 @@ jQuery.extend({
   }
 });
 
-$(document).ready(function() { 
-  initApp(); 
+$(document).ready(function() {
+  initApp();
   var params = $.getQueryParameters();
   if (shaka.Player.isBrowserSupported()) {
     if (params.drm) {
@@ -13,7 +13,7 @@ $(document).ready(function() {
       $('#laUrl').val('https://amssamples.keydelivery.mediaservices.windows.net/Widevine/?KID=1ab45440-532c-4399-94dc-5c5ad9584bac');
     }
     if (params.auto) {
-      playVideo(false); 
+      playVideo(false);
     }
   } else {
     showErrorMsg('Your browser is not supported!');
@@ -54,6 +54,10 @@ function playVideo(dodebug) {
 
   if(source) {
     play(source, laurl, dodebug);
+  }
+  if(!isPlaying)
+  {
+    $("#start").find('span').toggleClass('glyphicon-pause glyphicon-play');
   }
 }
 
@@ -245,7 +249,7 @@ function onShakaError(error) {
   console.error('Shaka error code', error.code, 'object', error);
 
   var codeName;
-  for (var k in shaka.util.Error.Code) { 
+  for (var k in shaka.util.Error.Code) {
     if (shaka.util.Error.Code[k] == error.code) {
       codeName = k;
     }
@@ -320,7 +324,7 @@ videoPlayer.onpause = function() {
   isPlaying = false;
 };
 
-playButton.onclick = function(){ 
+playButton.onclick = function(){
   $("#start").find('span').toggleClass('glyphicon-pause glyphicon-play');
   togglePlay();
 }
@@ -354,9 +358,9 @@ fullScreenButton.onclick = function(){
 
 var updateLoadingProgress = function(x) {
     var progress = $('#progressBar');
-    var position = x - progress.offset().left; 
+    var position = x - progress.offset().left;
     var percentage = 100 * position / progress.width();
- 
+
     if(percentage > 100) {
         percentage = 100;
     }
