@@ -13,7 +13,7 @@ block content
         div(id="videocontent")
           .controlButtons1
             input(id="manifestUrl", type="text", name="manifestUrl", value="http://www.bok.net/dash/tears_of_steel/cleartext/stream.mpd")
-            button(id="firstPlay", volume="0.5", type="button", onClick="playVideo(false)") Play
+            button(id="firstPlay", volume="0.5", type="button", onClick="playVideo(false);") Play
             button(id="debug", type="button", onClick="playVideo(true)") Debug
           video(id="video-container", class="video-js vjs-default-skin", style="width: 720px; height: 405px")
           div(id="textoverlay")
